@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { calculateWeeklyFootprint, REGIONAL_AVERAGES } from '../utils/carbonCalculator';
 import { STATIC_FALLBACKS } from '../utils/mockData';
 import { saveProgress } from '../utils/storage';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 
-export default function AIHabitCoach({ profile, progress, onUpdateProgress, apiKey }) {
+export default function AIHabitCoach({ profile, progress, onUpdateProgress }) {
   const [loading, setLoading] = useState(false);
   const [completedAnimationId, setCompletedAnimationId] = useState(null);
 
@@ -25,28 +24,16 @@ export default function AIHabitCoach({ profile, progress, onUpdateProgress, apiK
     const hasNoInsight = !progress.coachInsight;
     const hasNoChallenges = !progress.activeChallenges || progress.activeChallenges.length === 0;
     const categoryMismatch = progress.activeChallenges && progress.activeChallenges.length > 0 && progress.activeChallenges[0].category !== highestImpact;
-    const keyChanged = progress.generatedWithKey !== apiKey;
 
-    if (profile && (hasNoInsight || hasNoChallenges || categoryMismatch || keyChanged)) {
+    if (profile && (hasNoInsight || hasNoChallenges || categoryMismatch)) {
       generateCoaching();
     }
-  }, [profile, highestImpact, apiKey]);
+  }, [profile, highestImpact]);
 
   const generateCoaching = async () => {
     setLoading(true);
 
-    if (!apiKey) {
-      loadFallback();
-      return;
-    }
-
     try {
-      const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({
-        model: "gemini-2.0-flash",
-        generationConfig: { responseMimeType: "application/json" }
-      });
-
       const timeoutPromise = new Promise((_, reject) =>
         setTimeout(() => reject(new Error("Gemini API call timed out after 30 seconds.")), 30000)
       );
@@ -84,9 +71,20 @@ CONSTRAINTS:
   ]
 }`;
 
-      const apiPromise = model.generateContent(prompt);
-      const result = await Promise.race([apiPromise, timeoutPromise]);
-      const responseText = result.response.text();
+      const apiPromise = fetch('/api/gemini', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ prompt })
+      }).then(res => {
+        if (!res.ok) {
+          throw new Error(`API returned status ${res.status}`);
+        }
+        return res.text();
+      });
+
+      const responseText = await Promise.race([apiPromise, timeoutPromise]);
 
       let cleanText = responseText.trim();
       if (cleanText.startsWith('```')) {
@@ -109,8 +107,7 @@ CONSTRAINTS:
         ...progress,
         coachInsight: parsed.coachInsight,
         activeChallenges: processedChallenges,
-        isFallback: false,
-        generatedWithKey: apiKey
+        isFallback: false
       };
 
       saveProgress(updatedProgress);
@@ -138,8 +135,7 @@ CONSTRAINTS:
       ...progress,
       coachInsight: fallbackSet.coachInsight,
       activeChallenges: processedChallenges,
-      isFallback: true,
-      generatedWithKey: apiKey
+      isFallback: true
     };
 
     saveProgress(updatedProgress);
