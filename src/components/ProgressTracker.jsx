@@ -128,7 +128,7 @@ export default function ProgressTracker({ progress }) {
               />
               <text
                 x={x}
-                y={y - 12}
+                y={y < paddingTop + 20 ? y + 16 : y - 12}
                 className="text-[10px] font-extrabold fill-slate-700 text-center"
                 style={{ textAnchor: 'middle' }}
               >

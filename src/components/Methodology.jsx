@@ -90,7 +90,7 @@ export default function Methodology() {
       category: 'Diet — Vegan',
       factor: '2.89 kg CO2e/day',
       source: 'Scarborough et al. 2014',
-      details: 'Strictly plant-based lifecycle footprint, yielding the lowest dietary emissions profile.'
+      details: 'Strictly plant-based lifecycle footprint. In the Impact Simulator, vegan-to-vegan swaps apply a further local-sourcing offset of -0.4 kg CO2e/day.'
     },
     {
       category: 'Food Waste',
