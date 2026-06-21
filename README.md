@@ -9,9 +9,21 @@
 [![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-black.svg)](https://vercel.com/)
 [![Built with Google Antigravity](https://img.shields.io/badge/Agent-Google_Antigravity-teal.svg)](#)
 
-CarbonCompass is a high-fidelity, production-ready personal sustainability application designed to bridge the gap between carbon footprint awareness and actual behavioral change. Developed for the **PromptWars Virtual Hackathon (Challenge 3)**, the platform shifts the focus of carbon tracking away from friction-heavy calculators and passive guilt, instead guiding users toward immediate, contextual, and realistic "Small Wins" powered by a secure serverless Gemini AI implementation.
+CarbonCompass is a modern, high-fidelity personal sustainability application designed to bridge the gap between carbon footprint awareness and actual behavioral change. Developed for the **PromptWars Virtual Hackathon (Challenge 3)**, the platform shifts the focus of carbon tracking away from friction-heavy calculators and passive guilt, instead guiding users toward immediate, contextual, and realistic "Small Wins" powered by a secure serverless Gemini AI implementation.
 
 🔗 **Live Production Link:** [https://prompt-wars-virtual-hackathon.vercel.app/](https://prompt-wars-virtual-hackathon.vercel.app/)
+
+## ⚡ Quick Demo
+
+For evaluators:
+
+1. Open the app
+2. Click "Load Aditi" or "Load Rohan"
+3. View Dashboard
+4. Open Impact Simulator
+5. Open AI Habit Coach
+
+Experience the complete workflow in under 30 seconds.
 
 ---
 
@@ -21,7 +33,7 @@ Most carbon calculators function as audits: they require complex historical inpu
 
 **CarbonCompass changes the paradigm:**
 1. **Frictionless Entry**: Reduces onboarding to under 10 seconds using predefined regional personas.
-2. **Deterministic Integrity**: Uses a single, audited calculation engine to guarantee absolute consistency across all application views.
+2. **Deterministic Integrity**: Uses a single, audited calculation engine to guarantee consistent calculations across all application views.
 3. **Actionable AI Personalization**: Employs **Gemini 2.0 Flash** strictly as a personalization and behavioral layer. It interprets verified calculation outputs to recommend highly targeted, low-cost "Small Wins" tailored to the user's highest emissions category.
 
 ---
@@ -44,15 +56,20 @@ CarbonCompass focuses on **micro-behaviors**. We translate a user's macro-baseli
 > Below are the target visual highlights of the CarbonCompass interface. Use these markers when inspecting the live application:
 
 1. **Onboarding Persona Selector:** Pick pre-configured profiles (Suburban Commuter vs. Eco-Conscious Student) or complete a 3-step baseline.
-   * *[Insert Screenshot: Onboarding / Persona Selector]*
+   * *<img width="959" height="539" alt="Onboarding Persona Selector" src="https://github.com/user-attachments/assets/a0054c19-8d87-41f4-8c2d-f1ac65ed7071" />
+*
 2. **Main Dashboard:** Dynamic category breakdown (Transport, Energy, Diet, Waste) showing exact weekly totals.
-   * *[Insert Screenshot: Emissions Dashboard]*
+   * *<img width="959" height="539" alt="Dashboard" src="https://github.com/user-attachments/assets/2bdc734c-f099-45b5-b22d-53bb7af464ef" />
+*
 3. **Zero-Latency Impact Simulator:** Slide to dynamically swap commutes, trim appliance usage, and adjust meal types.
-   * *[Insert Screenshot: Impact Simulator Tab]*
+   * *<img width="959" height="539" alt="Impact Simulator" src="https://github.com/user-attachments/assets/7b54fdc1-cbb2-4e24-b0be-5f00b5cf3ed4" />
+*
 4. **AI Habit Coach:** OWL-themed coaching interface with live backend status indicators.
-   * *[Insert Screenshot: AI Habit Coach Tab]*
+   * *<img width="959" height="539" alt="Habit Coach_1" src="https://github.com/user-attachments/assets/80efeb32-1cc9-4886-9459-8455084f3137" />
+*
 5. **Progress & Badges:** Gamified tracker with streak metrics and permanent badge unlocks.
-   * *[Insert Screenshot: Progress Tracker]*
+   * *<img width="955" height="539" alt="Progress Tracker" src="https://github.com/user-attachments/assets/9bf545d1-687b-4b55-8043-f9607792437d" />
+*
 
 ---
 
