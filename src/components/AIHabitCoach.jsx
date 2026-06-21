@@ -259,6 +259,13 @@ CONSTRAINTS:
             <div className="text-4xl">🦉</div>
             <div>
               <span className="text-[10px] uppercase font-bold tracking-wider text-sage-700">Coach Insight</span>
+              <span className={`inline-block text-[9px] font-bold px-2 py-0.5 rounded-full mt-1 ${
+                progress.isFallback 
+                  ? 'bg-slate-100 text-slate-500' 
+                  : 'bg-emerald-100 text-emerald-700'
+              }`}>
+                {progress.isFallback ? '📋 Curated Challenges' : '⚡ AI Generated'}
+              </span>
               <h3 className="text-lg font-bold text-slate-800 mt-1">Your Opportunity Analysis</h3>
               <p className="text-slate-700 text-sm mt-3 leading-relaxed">
                 {progress.coachInsight}

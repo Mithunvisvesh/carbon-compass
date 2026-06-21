@@ -1,7 +1,6 @@
 const KEYS = {
   PROFILE: 'carbon_compass_profile',
   PROGRESS: 'carbon_compass_progress',
-  API_KEY: 'carbon_compass_gemini_key',
 };
 
 // Default profile for Rohan (Tech Pro) or Aditi (Student)
@@ -77,18 +76,9 @@ export function saveProgress(progress) {
   localStorage.setItem(KEYS.PROGRESS, JSON.stringify(progress));
 }
 
-export function getApiKey() {
-  return localStorage.getItem(KEYS.API_KEY) || '';
-}
-
-export function saveApiKey(key) {
-  localStorage.setItem(KEYS.API_KEY, key);
-}
-
 export function clearAll() {
   localStorage.removeItem(KEYS.PROFILE);
   localStorage.removeItem(KEYS.PROGRESS);
-  localStorage.removeItem(KEYS.API_KEY);
 }
 
 /**
